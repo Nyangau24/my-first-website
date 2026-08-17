@@ -1,1 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style>
+@font-face {
+  font-family: "Optimistic";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Optimistic Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
+}
+:where(html) {
+  font-family: "Optimistic", system-ui, sans-serif;
+}
+:where(code, pre, kbd, samp) {
+  font-family: "Optimistic Mono", ui-monospace, monospace;
+}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ogembo Farm Market | Fresh From Kisii Farms</title>
+<style>
+:root{--green:#2e7d32;--light:#e8f5e9;--dark:#1b5e20;--accent:#ffb300}
+*{margin:0;padding:0;box-sizing:border-box;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif}
+body{background:#fafafa;color:#222}
+header{background:white; padding:12px 16px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:10; border-bottom:1px solid #eee}
+.logo{font-weight:800; font-size:18px; color:var(--green)} .logo span{color:var(--accent)}
+.btn{padding:10px 18px; border-radius:24px; border:none; font-weight:600; cursor:pointer; text-decoration:none; display:inline-block}
+.btn-green{background:var(--green); color:white}
+.btn-outline{border:1.5px solid var(--green); color:var(--green); background:white}
+.hero{background:var(--light); padding:32px 16px; text-align:center}
+.hero h1{font-size:28px; line-height:1.2; margin-bottom:10px}
+.hero p{color:#555; margin-bottom:18px}
+.search{max-width:500px; margin:0 auto; display:flex; background:white; border-radius:30px; padding:6px; box-shadow:0 2px 10px rgba(0,0,0,0.08)}
+.search input{flex:1; border:none; padding:10px 16px; outline:none; border-radius:30px}
+.categories{display:flex; gap:8px; overflow:auto; padding:16px; white-space:nowrap}
+.cat{padding:8px 16px; background:white; border:1px solid #ddd; border-radius:20px; font-size:14px; cursor:pointer}
+.cat.active{background:var(--green); color:white; border-color:var(--green)}
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:0 16px 16px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
+.card{background:white; border-radius:14px; overflow:hidden; border:1px solid #eee; display:flex; flex-direction:column}
+.card img{width:100%; height:120px; object-fit:cover; background:#f0f0f0}
+.card-body{padding:10px; flex:1; display:flex; flex-direction:column}
+.card-body h3{font-size:15px; margin-bottom:4px}
+.price{font-weight:800; color:var(--green); margin:4px 0}
+.meta{font-size:12px; color:#777; margin-bottom:8px}
+.card .btn{width:100%; text-align:center; margin-top:auto; font-size:14px; padding:8px}
+.section{padding:24px 16px}
+.jobs{display:grid; gap:12px}
+.job{background:white; border:1px solid #eee; padding:14px; border-radius:12px; display:flex; justify-content:space-between; align-items:center}
+.fee-box{background:var(--dark); color:white; border-radius:16px; padding:20px; margin:16px; text-align:center}
+footer{background:#111; color:#bbb; padding:24px 16px; text-align:center; font-size:13px; margin-top:20px}
+footer b{color:white}
+.whatsapp-float{position:fixed; bottom:16px; right:16px; background:#25D366; color:white; width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:28px; text-decoration:none; box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">🌱 OGEMBO<span> MARKET</span></div>
+<a class="btn btn-green" href="#" onclick="postProduct()">+ Post</a>
+</header>
 
+<div class="hero">
+<h1>Fresh From Kisii Farms to Your Home</h1>
+<p>Buy & sell eggs, milk, kienyeji, vegetables & find farm jobs around Ogembo</p>
+<div class="search">
+<input id="searchInput" placeholder="Search eggs, milk, hens, jobs..." oninput="filterProducts()">
+<button class="btn btn-green" onclick="filterProducts()">Search</button>
+</div>
+</div>
+
+<div class="categories">
+<div class="cat active" onclick="filterCat('all',this)">All</div>
+<div class="cat" onclick="filterCat('eggs',this)">🥚 Eggs</div>
+<div class="cat" onclick="filterCat('milk',this)">🥛 Milk</div>
+<div class="cat" onclick="filterCat('hens',this)">🐔 Hens</div>
+<div class="cat" onclick="filterCat('veg',this)">🥬 Vegetables</div>
+<div class="cat" onclick="filterCat('jobs',this)">💼 Jobs</div>
+</div>
+
+<div class="grid" id="productGrid">
+<!-- PRODUCTS - EDIT THESE -->
+<div class="card" data-cat="eggs"><img src="https://images.unsplash.com/photo-1482049016688-2d3e1b31122f?w=400"><div class="card-body"><h3>Tray of Eggs (30)</h3><div class="price">KES 450</div><div class="meta">📍 Ogembo Town • Mama Moraa</div><a class="btn btn-green" href="#" onclick="orderWA('Tray of Eggs - KES 450')">Order WhatsApp</a></div></div>
+<div class="card" data-cat="milk"><img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400"><div class="card-body"><h3>Fresh Milk 1L</h3><div class="price">KES 60</div><div class="meta">📍 Nyamasibi • James Farm</div><a class="btn btn-green" href="#" onclick="orderWA('Fresh Milk 1L - KES 60')">Order WhatsApp</a></div></div>
+<div class="card" data-cat="hens"><img src="https://images.unsplash.com/photo-1548550023-2e00cba57d44?w=400"><div class="card-body"><h3>Kienyeji Hen</h3><div class="price">KES 1,200</div><div class="meta">📍 Kenyenya • Boke Poultry</div><a class="btn btn-green" href="#" onclick="orderWA('Kienyeji Hen - KES 1200')">Order WhatsApp</a></div></div>
+<div class="card" data-cat="hens"><img src="https://images.unsplash.com/photo-1589923188900-85dae523342b?w=400"><div class="card-body"><h3>Day-old Chicks (10)</h3><div class="price">KES 1,000</div><div class="meta">📍 Ogembo • Chicks Center</div><a class="btn btn-green" href="#" onclick="orderWA('Day-old Chicks 10 pcs - KES 1000')">Order WhatsApp</a></div></div>
+<div class="card" data-cat="veg"><img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400"><div class="card-body"><h3>Sukuma Bundle</h3><div class="price">KES 50</div><div class="meta">📍 Ogembo Market • Youth Farm</div><a class="btn btn-green" href="#" onclick="orderWA('Sukuma Bundle - KES 50')">Order WhatsApp</a></div></div>
+<div class="card" data-cat="eggs"><img src="https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=400"><div class="card-body"><h3>Kienyeji Eggs Tray</h3><div class="price">KES 650</div><div class="meta">📍 Kisii Rd • Nyangau Farm</div><a class="btn btn-green" href="#" onclick="orderWA('Kienyeji Eggs - KES 650')">Order WhatsApp</a></div></div>
+</div>
+
+<div class="section">
+<h2>💼 Farm Jobs Around Ogembo</h2>
+<div class="jobs" style="margin-top:12px">
+<div class="job"><div><b>Milker Needed</b><br><small>📍 Ogembo • KES 400/day • 6AM-10AM</small></div><a class="btn btn-outline" href="#" onclick="orderWA('Job: Milker Needed')">Apply</a></div>
+<div class="job"><div><b>Shamba Worker - 2 Acres</b><br><small>📍 Nyamasibi • KES 500/day</small></div><a class="btn btn-outline" href="#" onclick="orderWA('Job: Shamba Worker')">Apply</a></div>
+<div class="job"><div><b>Poultry Attendant</b><br><small>📍 Kenyenya • Full-time</small></div><a class="btn btn-outline" href="#" onclick="orderWA('Job: Poultry Attendant')">Apply</a></div>
+</div>
+</div>
+
+<div class="fee-box">
+<h2>📢 Tangaza Biashara Yako!</h2>
+<p style="margin:10px 0">Listing FREE. Featured on top: <b>KES 50 / week</b></p>
+<p>Lipa na M-Pesa Send Money: <b id="tillNumber">0794076713 / 0796265965</b></p>
+<a class="btn" style="background:white; color:var(--dark); margin-top:12px" href="#" onclick="orderWA('Nataka ku-feature product yangu')">Post on WhatsApp</a>
+</div>
+
+<footer>
+<b>Ogembo Farm Market</b><br>
+Fresh from Kisii Farms<br><br>
+📞 WhatsApp: <span id="phoneDisplay">0794076713 / 0796265965</span><br>
+M-Pesa Send Money: <span id="tillDisplay2">0794076713 / 0796265965</span><br>
+Ogembo, Kisii County, Kenya<br><br>
+Made with ❤️ by nyangau24.github.io
+</footer>
+
+<a class="whatsapp-float" href="#" id="waFloat" onclick="orderWA('Hello Ogembo Market')">💬</a>
+
+<script>
+// --- EDIT THESE TWO LINES ONLY ---
+const MY_PHONE = "254794076713"; // 0794076713 // e.g. 254712345678 - NO + sign
+const MY_TILL = "0794076713 / 0796265965 - Send Money"; // Your M-Pesa Send Money or Paybill
+
+// Apply to page
+document.getElementById('phoneDisplay').innerText = '0794076713 / 0796265965';
+document.getElementById('tillDisplay2').innerText = '0794076713 / 0796265965 (Send Money)';
+document.getElementById('tillNumber').innerText = '0794076713 / 0796265965 (Send Money)';
+document.getElementById('waFloat').href = "https://wa.me/"+MY_PHONE+"?text=Hello Ogembo Market";
+
+function orderWA(product){
+  const url = "https://wa.me/"+MY_PHONE+"?text="+encodeURIComponent("Habari Ogembo Market! Nataka: "+product+" . Niko Ogembo.");
+  window.open(url, "_blank");
+}
+function postProduct(){
+  orderWA("Habari, nataka kuuza bidhaa yangu kwa Ogembo Market");
+}
+function filterCat(cat, el){
+  document.querySelectorAll('.cat').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.card').forEach(card=>{
+    card.style.display = (cat==='all' || card.dataset.cat===cat) ? 'flex' : 'none';
+  });
+}
+function filterProducts(){
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card=>{
+    card.style.display = card.innerText.toLowerCase().includes(q) ? 'flex' : 'none';
+  });
+}
+</script>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
+                                                                                                                                      </html>
+                                                                                 
