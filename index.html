@@ -7,73 +7,60 @@
 <style>
 body{font-family:Arial,sans-serif;margin:0;background:#f5f5f5}
 .header{background:#0b6e2f;color:white;text-align:center;padding:25px 15px}
+.header h1{margin:0;font-size:28px}
+.header p{margin:5px 0 0;opacity:0.9}
 .banner{background:#f7c600;text-align:center;padding:10px;font-weight:bold}
 .container{padding:15px;max-width:1000px;margin:auto}
-.card{background:white;margin:15px 0;padding:15px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.1);display:flex;gap:15px;align-items:center}
-.card img{width:90px;height:120px;object-fit:cover;border-radius:8px;border:1px solid #ddd}
-.info{flex:1}
-.info h3{margin:0 0 5px;color:#0b6e2f}
-.price{font-weight:bold;color:#d00;font-size:18px}
-.btn{display:inline-block;background:#0b6e2f;color:white;padding:8px 15px;border-radius:6px;text-decoration:none;margin-top:8px}
+.category{background:white;margin:15px 0;padding:15px;border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
+.category h2{color:#0b6e2f;margin-top:0;border-bottom:2px solid #f7c600;padding-bottom:5px}
+.book{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eee}
+.btn{display:block;background:#0b6e2f;color:white;text-align:center;padding:12px;border-radius:8px;text-decoration:none;font-weight:bold;margin-top:10px}
+.btn:hover{background:#094f22}
 .footer{background:#222;color:white;text-align:center;padding:15px;margin-top:20px}
 </style>
 </head>
 <body>
 
 <div class="header">
-<h1>Ogembo Grace & Knowledge Bookshop</h1>
-<p>Bibles, Christian Books & School Books - Ogembo</p>
+  <h1>Ogembo Grace & Knowledge Bookshop</h1>
+  <p>Bibles, Christian Books & School Books - Ogembo, Kisii</p>
 </div>
 
-<div class="banner">WANAFUNZI NA WAKRISTO KARIBUNI! Prices in Ksh & USD</div>
+<div class="banner">
+  WANAFUNZI NA WAKRISTO KARIBUNI!! All Bibles & Revision Books Available
+</div>
 
 <div class="container">
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=200" alt="Bible">
-<div class="info">
-<h3>Biblia Takatifu - Swahili Union</h3>
-<p>Holy Bible in Swahili - Large print</p>
-<div class="price">Ksh 2,000 / $15.50</div>
-<a class="btn" href="https://wa.me/254796265963?text=Nataka%20Biblia%20Ksh%202000">Order WhatsApp</a>
-</div>
-</div>
+  <div class="category">
+    <h2>📖 Bibles - Biblia Takatifu</h2>
+    <div class="book"><span>Swahili Union Version Bible</span><span>Ksh 1,500</span></div>
+    <div class="book"><span>English Good News / KJV Bible</span><span>Ksh 1,800</span></div>
+    <div class="book"><span>Study Bibles & Children's Bibles</span><span>From Ksh 2,500</span></div>
+    <a class="btn" href="https://wa.me/254796265963?text=Habari,%20naomba%20Biblia">Order via WhatsApp</a>
+  </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=200" alt="English Bible">
-<div class="info">
-<h3>English KJV / Good News Bible</h3>
-<p>English Study Bible</p>
-<div class="price">Ksh 2,000 / $15.50</div>
-<a class="btn" href="https://wa.me/254796265963?text=Nataka%20English%20Bible">Order WhatsApp</a>
-</div>
-</div>
+  <div class="category">
+    <h2>✝️ Christian & Religious Books</h2>
+    <div class="book"><span>Joyce Meyer, TD Jakes, Benny Hinn</span><span>From Ksh 800</span></div>
+    <div class="book"><span>SDA, Catholic & Hymn Books - Nyimbo za Kristo</span><span>From Ksh 600</span></div>
+    <div class="book"><span>Devotionals & Sunday School Materials</span><span>From Ksh 500</span></div>
+    <a class="btn" href="https://wa.me/254796265963?text=Habari,%20naomba%20kitabu%20cha%20kikristo">Order via WhatsApp</a>
+  </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=200" alt="Christian Book">
-<div class="info">
-<h3>Christian Books - Joyce Meyer, TD Jakes</h3>
-<p>Inspirational & Motivational Books</p>
-<div class="price">Ksh 1,200 / $9.30</div>
-<a class="btn" href="https://wa.me/254796265963?text=Nataka%20Christian%20Book">Order WhatsApp</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=200" alt="School Books">
-<div class="info">
-<h3>KCSE / JSS / CBC School Books</h3>
-<p>KLB, Longhorn, Moran - All Classes</p>
-<div class="price">Ksh 850 / $6.60</div>
-<a class="btn" href="https://wa.me/254796265963?text=Nataka%20School%20Book">Order WhatsApp</a>
-</div>
-</div>
+  <div class="category">
+    <h2>🎓 School Books & Stationery</h2>
+    <div class="book"><span>KCSE & JSS Revision - KLB, Longhorn, Moran</span><span>From Ksh 650</span></div>
+    <div class="book"><span>Exercise Books, Pens, Mathematical Sets</span><span>Available</span></div>
+    <div class="book"><span>CBC Textbooks - Grade 1-9</span><span>Available</span></div>
+    <a class="btn" href="https://wa.me/254796265963?text=Habari,%20naomba%20vitabu%20vya%20shule">Order via WhatsApp</a>
+  </div>
 
 </div>
 
 <div class="footer">
-<p>Ogembo Grace & Knowledge Bookshop - Ogembo Town</p>
-<p>Call/WhatsApp: 0796 265 963</p>
+  <p>Ogembo Grace & Knowledge Bookshop - Ogembo Town, Near Ogembo Market</p>
+  <p>Call/WhatsApp: 0796 265 963 | Delivery in Kisii & Nyamira</p>
 </div>
 
 </body>
